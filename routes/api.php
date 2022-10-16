@@ -30,6 +30,7 @@ Route::prefix('v1')->group(function () {
         Route::resource('users', UserController::class);
     });
     Route::name('categories')->group(function () {
+        Route::get('categories/{id}/real-states', [CategoryController::class, 'realState']);
         Route::resource('categories', CategoryController::class);
     });
 });
