@@ -26,4 +26,9 @@ class RealState extends Model
     {
         return $this->BelongsToMany(Category::class, 'real_state_categories');
     }
+
+    public function photos()
+    {
+        return $this->hasMany(RealStatePhoto::class);
+    }
 }
