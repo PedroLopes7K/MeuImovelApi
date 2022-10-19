@@ -12,7 +12,6 @@ class LoginJwtController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->all(['email', 'password']);
-        Log::info($credentials);
 
         if (!$token = auth('api')->attempt($credentials)) {
             $message = new ApiMessages('Unauthorized');
@@ -22,5 +21,12 @@ class LoginJwtController extends Controller
         return response()->json([
             'token' => $token
         ], 200);
+    }
+
+    public function logout()
+    {
+        auth('api')->logout();
+
+        return response()->json(['message' => 'Logout Successfully'], 200);
     }
 }
